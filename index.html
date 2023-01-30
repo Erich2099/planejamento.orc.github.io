@@ -1,29 +1,158 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programação Orçamentária</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="text-center">Programação Orçamentária</h1>
-      <form>
-        <div class="form-group">
-          <label for="interessado">Interessado</label>
-          <select class="form-control" id="interessado">
-            <option value="CA">CA</option>
-            <option value="SELOG">SELOG</option>
-            <option value="PRM-CG">PRM-CG</option>
-            <option value="SE">SE</option>
-          </select>
+<html>
+    <head>
+        <title>Envio de Informações Orçamentárias do MPF na Paraíba</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Envio de Informações Orçamentárias do MPF na Paraíba</h2>
+
+            <form>
+                <div class="form-group">
+                    <label for="setor_solicitante">Setor Solicitante:</label>
+                    <select class="form-control" id="setor_solicitante">
+                        <option>CA</option>
+                        <option>COJUD</option>
+                        <option>NUGEP</option>
+                        <option>SE</option>
+                        <option>CHEFIA DE GABINETE</option>
+                        <option>PRM-CG</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="competencia">Competência:</label>
+                    <select class="form-control" id="competencia">
+                        <option>Janeiro</option>
+                        <option>Fevereiro</option>
+                        <option>Março</option>
+                        <option>Abril</option>
+                        <option>Maio</option>
+                        <option>Junho</option>
+                        <option>Julho</option>
+                        <option>Agosto</option>
+                        <option>Setembro</option>
+                        <option>Outubro</option>
+                        <option>Novembro</option>
+                        <option>Dezembro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descricao_item">Descrição Item:</label>
+                    <input type="text" class="form-control" id="descricao_item" maxlength="250">
+                </div>
+                <div class="form-group">
+                    <label for="justificativa">Justificativa:</label>
+                    <input type="text" class="form-control" id="justificativa" maxlength="250">
+                </div>
+                <div class="form-group">
+                    <label for="local_aplicacao">Local de Aplicação:</label>
+                    <select class="form-control" id="local_aplicacao">
+                        <option>João Pessoa</option>
+                        <option>Campina Grande</option>
+                        <option>Patos</option>
+                        <option>Sousa</option>
+                        <option>Monteiro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="valor_estimado">Valor Estimado:</label>
+                    <input type="text" class="form-control" id="valor_estimado" maxlength="10">
+                </div>
+                <button type="button" class="btn btn-primary" id="adicionar">Adicionar</button>
+            </form>
+            <br>
+
+            <table class="table table-bordered" id="tabela_informacoes">
+                <thead>
+                    <tr>
+                        <th>Setor Solicitante</th>
+                        <th>Competência</th>
+                        <th>Descrição Item</th>
+                        <th>Justificativa</th>
+                        <th>Local de Aplicação</th>
+                        <th>Valor Estimado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <br>
+            <button type="button" class="btn btn-success" id="gerar_relatorio">Criar Relatório</button>
         </div>
-      </form>
-    </div>
-  </body>
+        <script>
+            $(document).ready(function(){
+                $("#adicionar").click(function(){
+                    let setor_solicitante = $("#setor_solicitante").val();
+                    let competencia = $("#competencia").val();
+                    let descricao_item = $("#descricao_item").val();
+                    let justificativa = $("#justificativa").val();
+                    let local_aplicacao = $("#local_aplicacao").val();
+                    let valor_estimado = $("#valor_estimado").val();
+
+                    let linha = "<tr>";
+                    linha += "<td>" + setor_solicitante + "</td>";
+                    linha += "<td>" + competencia + "</td>";
+                    linha += "<td>" + descricao_item + "</td>";
+                    linha += "<td>" + justificativa + "</td>";
+                    linha += "<td>" + local_aplicacao + "</td>";
+                    linha += "<td>" + valor_estimado + "</td>";
+                    linha += "<td><button class='btn btn-danger excluir'><span class='glyphicon glyphicon-trash'></span> Excluir</button></td>";
+                    linha += "</tr>";
+
+                    $("#tabela_informacoes tbody").append(linha);
+
+                    $("#setor_solicitante").val("");
+                    $("#competencia").val("");
+                    $("#descricao_item").val("");
+                    $("#justificativa").val("");
+                    $("#local_aplicacao").val("");
+                    $("#valor_estimado").val("");
+                });
+
+                $("#tabela_informacoes").on("click", ".excluir", function(){
+                    $(this).parent().parent().remove();
+                });
+
+                $("#gerar_relatorio").click(function(){
+                    let conteudo = "";
+                    let linhas = $("#tabela_informacoes tbody tr");
+
+                    linhas.each(function(){
+                        let setor_solicitante = $(this).find("td:eq(0)").text();
+                        let competencia = $(this).find("td:eq(1)").text();
+                        let descricao_item = $(this).find("td:eq(2)").text();
+                        let justificativa = $(this).find("td:eq(3)").text();
+                        let local_aplicacao = $(this).find("td:eq(4)").text();
+                        let valor_estimado = $(this).find("td:eq(5)").text();
+
+                        conteudo += setor_solicitante + ",";
+                        conteudo += competencia + ",";
+                        conteudo += descricao_item + ",";
+                        conteudo += justificativa + ",";
+                        conteudo += local_aplicacao + ",";
+                        conteudo += valor_estimado + "\n";
+                    });
+
+                    let link = document.createElement("a");
+                    link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(conteudo));
+                    link.setAttribute("download", "relatorio.csv");
+
+                    link.style.display = "none";
+                    document.body.appendChild(link);
+
+                    link.click();
+
+                    document.body.removeChild(link);
+                });
+            });
+        </script>
+    </body>
 </html>
